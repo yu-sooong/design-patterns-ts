@@ -30,4 +30,4 @@ jobs:
         run: npm run lint
 
       - name: 🔹 Run Jest Tests with Coverage
-        run: npm test -- --coverage
+        run: NODE_OPTIONS=--experimental-vm-modules npm test -- --coverage
