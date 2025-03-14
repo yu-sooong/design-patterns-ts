@@ -23,11 +23,20 @@ jobs:
           cache: "npm"
           cache-dependency-path: "package-lock.json"
 
+      - name: 🔹 清除 Jest Cache
+        run: npx jest --clearCache
+        
       - name: 🔹 Install Dependencies
         run: npm ci
 
       - name: 🔹 Run ESLint (Code Style Check)
         run: npm run lint
+
+      - name: 🔹 Debug Jest Version
+        run: npx jest --version
+
+      - name: 🔹 Debug `ts-jest` 版本
+        run: npx ts-jest config:dump
 
       - name: 🔹 Run Jest Tests with Coverage
         run: NODE_OPTIONS=--experimental-vm-modules npm test -- --coverage
