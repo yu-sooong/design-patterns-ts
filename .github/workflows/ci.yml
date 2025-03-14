@@ -28,11 +28,13 @@ jobs:
       - name: 🔹 ESLint
         run: npm run lint
 
-      - name: 🔹 Debug Jest 版本
-        run: npx jest --version
-
-      - name: 🔹 Debug `ts-jest`
+      - name: 🔹 TS-JEST INIT
         run: npx ts-jest config:init  # ✅ 讓 Jest 自動產生 `jest.config.js`
 
       - name: 🔹 Run Jest Tests with Coverage
         run: NODE_OPTIONS=--experimental-vm-modules npm test -- --coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
