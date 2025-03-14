@@ -14,16 +14,17 @@ jobs:
 
     steps:
       - name: 🔹 Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: 🔹 Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: "npm"
+          cache-dependency-path: "package-lock.json"
 
       - name: 🔹 Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: 🔹 Run ESLint (Code Style Check)
         run: npm run lint
