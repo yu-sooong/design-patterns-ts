@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 23
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run lint  # 先執行 ESLint 檢查
+  - npm test -- --coverage  # 產生測試覆蓋率
